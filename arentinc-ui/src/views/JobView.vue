@@ -28,6 +28,7 @@
         <h4>{{ ja_Job }}</h4>
       </div>
     </div>
+    <!--▼業務件数テーブルデータ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
     <table class="table table-striped">
       <thead>
         <tr>
@@ -37,11 +38,18 @@
         </tr>
       </thead>
       <tbody>
+        <!--▼Dummy Data▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
         <tr v-if="noData">
-          <td>dummy Employee</td>
-          <td>dummy Department</td>
-          <td>dummy Total</td>
+          <td>BRUCE</td>
+          <td>IT</td>
+          <td>1</td>
         </tr>
+        <tr v-if="noData">
+          <td>LIM</td>
+          <td>QA</td>
+          <td>5</td>
+        </tr>
+        <!--▲Dummy Data▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲-->
         <tr v-for="dat in jobs" :key="dat.jobId">
           <td
             data-bs-toggle="modal"
@@ -67,6 +75,8 @@
         </tr>
       </tbody>
     </table>
+    <!--▲業務件数テーブルデータ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲-->
+    <!--▼データ編集MODAL▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
     <input-modal-view
       :Title="modalTitle"
       :Id="JobId"
@@ -112,6 +122,7 @@
         </div>
       </template>
     </input-modal-view>
+    <!--▲データ編集MODAL▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲-->
     <!--▼社員業務一覧Modal▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
     <div
       class="modal fade"
