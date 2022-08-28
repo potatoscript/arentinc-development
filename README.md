@@ -82,19 +82,13 @@
 ### 4. Deploy　配備 
 [目次](#目次)
 
-　　- FrontendをgitHubに配備する設定箇所：
-
+  - FrontendをgitHubに配備する設定箇所：
     - [deploy.sh](./arentinc-ui/src/deploy.sh)
-	
     - [package.json](./arentinc-ui/src/package.json) - `"deploy": "sh deploy.sh"`
-	
-	- [vue.config.js](./arentinc-ui/src/package.json) - `publicPath : '/arentinc-production/'`
- 
- 
-　　- BackendをDocker Imageを作成する設定箇所：
-    
+    - [vue.config.js](./arentinc-ui/src/package.json) - `publicPath : '/arentinc-production/'`
+
+  - BackendをDocker Imageを作成する設定箇所：  
 	- [Dockerfile](./arentinc-api/Dockerfile)
-	
 	- Image名称定義 : `<Ddocker Hub ID>/<Project Name>:<Version>` => `docker build -t potatoscript/arentinc-api .`
 	
 　　
