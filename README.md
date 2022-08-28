@@ -88,10 +88,9 @@
     - [vue.config.js](./arentinc-ui/src/package.json) - `publicPath : '/arentinc-production/'`
 
   - BackendをDocker Imageを作成する設定箇所：  
-	- [Dockerfile](./arentinc-api/Dockerfile)
-	- Image名称定義 : `<Ddocker Hub ID>/<Project Name>:<Version>` => `docker build -t potatoscript/arentinc-api .`
+	- [Dockerfile](./arentinc-api/Dockerfile) <br>
+	   `docker build -t <Ddocker Hub ID>/<Project Name>:<Version> .`
 	
-　　
 ### c 継続的な開発
 [目次](#目次)
 
@@ -100,6 +99,5 @@
 
 
 ## d 著者
-[目次](#目次)
 
 - Website - [BRUCE LIM](https://potatoscript.github.io/resume/)
