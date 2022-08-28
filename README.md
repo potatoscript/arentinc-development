@@ -25,10 +25,8 @@
 <image style="width:300px;height:150px" src="./document/screenshot.png" />
 
 ### リンク
-[目次](#目次)
-
-- 以下のリンクは、デモンストレーションのために github にアップロードされた [Front End] システムです。
-- [Front End]ライブサイト URL: [The System](https://potatoscript.github.io/arentinc-production/)
+  以下のリンクは、デモンストレーションのために github にアップロードされた [Front End] システムのみです。<br>
+  URL: [Frontend ライブサイト](https://potatoscript.github.io/arentinc-production/)
 
 ## 構造
 [目次](#目次)
