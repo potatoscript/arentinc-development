@@ -1,18 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JobApi.Models;
+﻿using JobApi.Models;
 using JobApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace JobApi
 {
@@ -27,16 +20,21 @@ namespace JobApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        ///  This method gets called by the runtime. 
+        ///  Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            // setup the database connection
+            // データベース接続をセットアップする
             services.AddDbContext<DBContext>(options => options.UseNpgsql(ConnectionString));
 
             services.AddTransient<EmployeeServices>();
             services.AddTransient<JobServices>();
 
+            // Cross-Origin Resource Sharing (CORS)設定
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -49,7 +47,12 @@ namespace JobApi
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. 
+        /// Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -57,6 +60,7 @@ namespace JobApi
                 app.UseDeveloperExceptionPage();
             }
 
+            // CORSを設定する
             app.UseCors(builder =>
             {
                 builder

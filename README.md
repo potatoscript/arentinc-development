@@ -12,10 +12,20 @@ Coding challenge
 Front End : Vue.js, Nuxt.js, Boostrap.js
 Back End : C#, ASP.NET CORE, 
 
+
 コード構造
 DB定義： Models
-        |-Employee.cs
-		|-Job.cs
+<table id="databasetable" style="border:1px solid black">
+<tr>
+<th colspan=2>論理テーブル名</th>
+<td　colspan=8>従業員マスターデータ</td>
+</tr>
+<tr>
+<th colspan=2>物理テーブル名</th>
+<td　colspan=8>Employees</td>
+</tr>
+</table>
+
 		
 Back End :
 <table>

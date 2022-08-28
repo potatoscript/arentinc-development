@@ -15,11 +15,19 @@ namespace JobApi.Services
 
         public NpgsqlDataReader data;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="configuration">ｻｰﾊﾞｰ接続オブジェクト</param>
         public DataBaseServices(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// NpgSqlデータベースに接続してクエリを行う
+        /// </summary>
+        /// <param name="sql">クエリコード</param>
         public void Open(string sql)
         {
             conn = new NpgsqlConnection(_configuration.GetConnectionString("DbContextConnection"));
@@ -28,6 +36,7 @@ namespace JobApi.Services
             NpgsqlCommand query = new NpgsqlCommand(sql, conn);
             data = query.ExecuteReader();
         }
+
         public void Close()
         {
             conn.Close();

@@ -12,13 +12,22 @@ namespace JobApi.Services
         private DBContext _context;
 
         IConfiguration _configuration;
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="context">データベースオブジェクト</param>
+        /// <param name="configuration">ｻｰﾊﾞｰ接続オブジェクト</param>
         public EmployeeServices(DBContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
-        // Create employee into table
+        /// <summary>
+        /// 従業員マスターデータを作成する
+        /// </summary>
+        /// <param name="employee">従業員Model</param>
         public void CreateEmployee(Employee employee)
         {
             var _employee = new Employee()
@@ -32,8 +41,12 @@ namespace JobApi.Services
             _context.SaveChanges();
         }
 
-        // Read All the Employee from the database table
+
         public List<Employee> EmployeeList = new List<Employee>();
+        /// <summary>
+        /// 全従業員のマスターデータを取得する
+        /// </summary>
+        /// <returns>EmployeeList</returns>
         public List<Employee> ReadAllEmployees()
         {
             string sql = "SELECT DISTINCT ON (\"Name\") \"Name\",\"EmployeeId\", \"Department\",\"Position\"  FROM \"Employees\"";
@@ -59,7 +72,11 @@ namespace JobApi.Services
             return EmployeeList;
         }
 
-        // Read employee data by name
+        /// <summary>
+        /// 対象従業員のマスターデータを取得する
+        /// </summary>
+        /// <param name="name">従業員名</param>
+        /// <returns></returns>
         public List<Employee> ReadEmployeeByName(string name)
         {
             var _data = _context.Employees
@@ -71,7 +88,11 @@ namespace JobApi.Services
             return _data;
         }
 
-        // Update Employee
+        /// <summary>
+        /// 対象従業員のマスターデータを更新する
+        /// </summary>
+        /// <param name="employee">従業員Model</param>
+        /// <returns></returns>
         public Employee UpdateEmployeeById(Employee employee)
         {
             var _employee = _context.Employees.FirstOrDefault(n => n.EmployeeId == employee.EmployeeId);
@@ -87,7 +108,10 @@ namespace JobApi.Services
             return _employee;
         }
 
-        // Delete Employee
+        /// <summary>
+        /// 対象従業員のマスターデータを削除する
+        /// </summary>
+        /// <param name="employeeId">従業員ID</param>
         public void DeleteEmployeeById(int employeeId)
         {
             var _employee = _context.Employees.FirstOrDefault(n => n.EmployeeId == employeeId);

@@ -13,8 +13,14 @@ namespace JobApi.Models
 
         }
 
-        // Create a table named Employees with the column fields of Model Employee
+        /// <summary>
+        /// 従業員テーブルを設定する（テーブル項目定義はEmployee Modelで取得する）
+        /// </summary>
         public DbSet<Employee> Employees { get; set; }
+
+        /// <summary>
+        /// 業務テーブルを設定する（テーブル項目定義はJobs Modelで取得する）
+        /// </summary>
         public DbSet<Job> Jobs { get; set; }
 
 

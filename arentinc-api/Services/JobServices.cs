@@ -14,13 +14,21 @@ namespace JobApi.Services
 
         IConfiguration _configuration;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="context">データベースオブジェクト</param>
+        /// <param name="configuration">ｻｰﾊﾞｰ接続オブジェクト</param>
         public JobServices(DBContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
 
-        // Create job into table
+        /// <summary>
+        /// 業務データを作成する
+        /// </summary>
+        /// <param name="job">業務Model</param>
         public void CreateJob(Job job)
         {
             var _job = new Job()
@@ -37,7 +45,12 @@ namespace JobApi.Services
 
 
         public List<Job> JobList = new List<Job>();
-        //Read all the jobs data from the database table
+
+        /// <summary>
+        ///　従業員の全業務を取得する
+        /// </summary>
+        /// <param name="employee">従業員名</param>
+        /// <returns></returns>
         public List<Job> ReadAllEmployeeJobs(string employee)
         {
             string sql = "SELECT \"JobId\", \"EmployeeName\", \"EmployeeDepartment\", \"JobContent\", \"DueDate\", \"Status\" FROM \"Jobs\"";
@@ -65,6 +78,10 @@ namespace JobApi.Services
             return JobList;
         }
 
+        /// <summary>
+        /// 各従業員の総合業務件数を取得する
+        /// </summary>
+        /// <returns></returns>
         public List<Job> ReadTotalJobsOfEmployee()
         {
             string sql = "SELECT \"EmployeeName\",\"EmployeeDepartment\", Count(\"JobContent\") FROM \"Jobs\"";
@@ -90,7 +107,11 @@ namespace JobApi.Services
             return JobList;
         }
 
-        // Update Job
+        /// <summary>
+        /// 業務データを更新する
+        /// </summary>
+        /// <param name="job">業務Model</param>
+        /// <returns></returns>
         public Job UpdateJobById(Job job)
         {
             var _job = _context.Jobs.FirstOrDefault(n => n.JobId == job.JobId);
@@ -107,7 +128,10 @@ namespace JobApi.Services
             return _job;
         }
 
-        // Delete Job
+        /// <summary>
+        /// 業務データを削除する
+        /// </summary>
+        /// <param name="jobId">業務データID</param>
         public void DeleteJobById(int jobId)
         {
             var _job = _context.Jobs.FirstOrDefault(n => n.JobId == jobId);
