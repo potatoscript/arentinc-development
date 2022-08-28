@@ -64,6 +64,14 @@
       </tbody>
     </table>
     <!--▲業務件数テーブルデータ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲-->
+    <div class="input-group">
+      <div style="width: 300px; height: 200px">
+        <canvas id="jobPieChart"></canvas>
+      </div>
+      <div style="width: 600px; height: 200px">
+        <canvas id="jobBarChart"></canvas>
+      </div>
+    </div>
     <!--▼データ編集MODAL▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
     <input-modal-view
       :Title="modalTitle"
@@ -205,10 +213,14 @@ import ja from "../locales/ja.json";
 import InputModalView from "./InputModalView.vue";
 // dummy data
 import dummy from "../assets/dummy.json";
+// chart library
+import Chart from "chart.js/auto";
+import ChartJsPluginDataLabels from "chartjs-plugin-datalabels";
 
 export default {
   components: {
     InputModalView,
+    ChartJsPluginDataLabels,
   },
   data() {
     return {
@@ -219,6 +231,8 @@ export default {
       ja_DueDate: ja.DueDate,
       ja_Status: ja.Status,
       ja_TotalJobs: ja.TotalJobs,
+      chartLabels: [],
+      chartData: [],
       modalTitle: ja.New,
       employeeList: [],
       jobs: [],
@@ -331,12 +345,95 @@ export default {
         .get(url.API_URL + "Job/read-total-jobs-employee")
         .then((response) => {
           self.jobs = response.data;
+          self.createPieChart();
         })
         .catch((error) => {
           console.log(error);
           // 接続がない場合、ダミーデータが使用されます
           self.jobs = dummy[0].jobscount;
+          self.createPieChart();
         });
+    },
+    createPieChart() {
+      const self = this;
+      this.jobs.forEach(function (item) {
+        self.chartLabels.push(item.employeeName);
+        self.chartData.push(item.jobContent);
+      });
+      const ctx = document.getElementById("jobPieChart");
+      const data = {
+        labels: self.chartLabels,
+        datasets: [
+          {
+            label: "Result",
+            data: self.chartData,
+            borderColor: "black",
+            borderWidth: 1,
+            backgroundColor: ["pink", "lightyellow", "lightblue", "lightgreen"],
+          },
+        ],
+      };
+      const config = {
+        type: "doughnut",
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            datalabels: {
+              color: "black",
+              textAlign: "center",
+              font: {
+                weight: "bold",
+                size: 16,
+              },
+            },
+          },
+        },
+      };
+      const jobChart = new Chart(ctx, config);
+      jobChart;
+      this.createBarChart();
+    },
+    createBarChart() {
+      const self = this;
+      self.chartLabels = [];
+      self.chartData = [];
+      this.jobs.forEach(function (item) {
+        self.chartLabels.push(item.employeeName);
+        self.chartData.push(item.jobContent);
+      });
+      const ctx = document.getElementById("jobBarChart");
+      const data = {
+        labels: self.chartLabels,
+        datasets: [
+          {
+            label: ja.Case,
+            data: self.chartData,
+            borderColor: "black",
+            borderWidth: 1,
+            backgroundColor: ["pink", "lightyellow", "lightblue", "lightgreen"],
+          },
+        ],
+      };
+      const config = {
+        type: "bar",
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            datalabels: {
+              color: "black",
+              textAlign: "center",
+              font: {
+                weight: "bold",
+                size: 16,
+              },
+            },
+          },
+        },
+      };
+      const jobBarChart = new Chart(ctx, config);
+      jobBarChart;
     },
     updateClick() {
       axios

@@ -37,6 +37,7 @@
 - [Vue.js](https://vuejs.org/) - Front End development library with [cli](https://cli.vuejs.org/) framework
 - [AXIOS](https://axios-http.com/docs/intro) - ブラウザから XMLHttpRequest を作成する
 - [Boostrap.js](https://getbootstrap.com/) - css スタイリング ライブラリ
+- [Chart.js](https://chartjs.org/) - JavaScript charting ライブラリ
 
 
 ### b ｺｰﾄﾞﾌｧｲﾙ構造定義
@@ -93,7 +94,6 @@
 [目次](#目次)
 
 - 今後検証付きのログインページを作成する
-- Chart.js を含めて、結果をグラフの形式で作成する
 
 
 ## d 著者
