@@ -22,7 +22,13 @@
 <image style="width:300px;height:150px" src="./document/workflow.png" />
 
 ### スクリーンショット
-<image style="width:300px;height:150px" src="./document/screenshot.png" />
+<table>
+<tr>
+<td><image style="width:300px;height:150px" src="./document/screenshot.png" /></td>
+<td></td>
+<td><image style="width:300px;height:150px" src="./document/screenshot2.png" /></td>
+</tr>
+</table>
 
 ### リンク
   以下のリンクは、デモンストレーションのために github にアップロードされた [Front End] システムのみです。<br>
