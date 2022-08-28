@@ -44,11 +44,11 @@
 ### b ｺｰﾄﾞﾌｧｲﾙ構造定義
 [目次](#目次)
 
-1. DB定義
+### 1. DB定義
   - [Employeesテーブル](./document/Employees.sql) - 従業員マスターテーブルデータDDL
   - [Jobsテーブル](./document/Jobs.sql) - 業務テーブルデータDDL
   
-2. Backend　フォルダ構造 
+### 2. Backend　フォルダ構造 
   - [Startup.cs](./arentinc-api/Startup.cs) - Get the connectionString of the database from `appsettings.json`
   - [appsettings.json](./arentinc-api/appsettings.cs) - Set the connectionSgring of the database
   - Controllers - Frontendの入口 <br>
@@ -63,7 +63,7 @@
     |- [EmployeeServices.cs](./arentinc-api/Services/EmployeeServices.cs) - 従業員ＳＱＬクエリ作成クラス <br>
     |- [JobServices.cs](./arentinc-api/Services/JobServices.cs) - 業務ＳＱＬクエリ作成クラス <br>
 	
-3. Frontend　フォルダ構造 
+### 3. Frontend　フォルダ構造 
   - [dist](./arentinc-ui/dist/) - デプロイされたファイルの場所<br>
   - assets<br>
      |- js - [url.js](./arentinc-ui/src/assets/js/url.js) - BackendのURLを設定する `API_URL: "https://localhost:44306/api/"` <br>
@@ -79,7 +79,7 @@
   - [App.vue](./arentinc-ui/src/App.vue) - Main画面 <br>  
   - [main.js](./arentinc-ui/src/main.js) - 共通library設定箇所 
 
-4. Deploy　配備 
+### 4. Deploy　配備 
 [目次](#目次)
 
 　　- FrontendをgitHubに配備する設定箇所：<br>  
