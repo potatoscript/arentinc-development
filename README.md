@@ -1,7 +1,7 @@
-# Arentinc Coding Challenge - Workload Monitoring Solution
+# Coding Challenge - Workload Monitoring Solution
 
-Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で作成するシンプルなシステムです。
-企業の従業員のワークロードを監視するためのソリューションです
+- Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で作成するシンプルなシステムです。<br>
+- 企業の従業員のワークロードを監視するためのソリューションです- 
 
 ## 目次
 
@@ -10,22 +10,19 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
   - [スクリーンショット](#スクリーンショット)
   - [リンク](#リンク)
 - [構造](#構造)
-  - [開発環境・ツール](#a-開発環境・ツール)
-  - [コード構造・開発手順](#b-コード構造・開発手順)
+  - [開発環境・ツール](#a-開発環境ツール)
+  - [ｺｰﾄﾞﾌｧｲﾙ構造・定義](#b-ｺｰﾄﾞﾌｧｲﾙ構造定義)
   - [継続的な開発](#c-継続的な開発)
 - [著者](#d-著者)
 
 
 ## 概要
-
-### ワークフロー
 [目次](#目次)
+### ワークフロー
 <image style="width:300px;height:150px" src="./document/workflow.png" />
 
 ### スクリーンショット
-[目次](#目次)
 <image style="width:300px;height:150px" src="./document/screenshot.png" />
-
 
 ### リンク
 [目次](#目次)
@@ -35,7 +32,7 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
 
 ## 構造
 [目次](#目次)
-### a 開発環境・ツール
+### a 開発環境ツール
 
 - [PostgreSQL](https://www.postgresql.org/) - Database
 - [ASP.NET CORE API](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0) - Back End development framework in c#
@@ -44,7 +41,7 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
 - [Boostrap.js](https://getbootstrap.com/) - css スタイリング ライブラリ
 
 
-### b コード構造・開発手順
+### b ｺｰﾄﾞﾌｧｲﾙ構造定義
 [目次](#目次)
 
 -　DB定義
@@ -67,7 +64,7 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
     |- [JobServices.cs](./arentinc-api/Services/JobServices.cs) - 業務ＳＱＬクエリ作成クラス <br>
 	
 -　Frontend　フォルダ構造
-  - dist<br>
+  - [dist](./arentinc-ui/dist/) - デプロイされたファイルの場所<br>
   - assets<br>
      |- js - [url.js](./arentinc-ui/src/assets/js/url.js) - BackendのURLを設定する `API_URL: "https://localhost:44306/api/"` <br>
 	 |- [dummy.json](./arentinc-ui/src/assets/dummy.json) - Backendの接続なし時のダミーデータ (デモンストレーション用) <br>
@@ -78,7 +75,7 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
   - views<br>
      |- [EmployeeView.vue](./arentinc-ui/src/views/EmployeeView.vue) - 従業員マスター表示画面 <br>
      |- [JobView.vue](./arentinc-ui/src/views/JobView.vue) - 業務一覧表示画面 <br>	 
-	 |- [InputModalView.vue](./arentinc-ui/src/views/InputModalView.vue) - 共通データ登録表示画面 <br>	 
+	 |- [InputModalView.vue](./arentinc-ui/src/views/InputModalView.vue) - 共通データ登録表示画面 `prop` `$emit` `<slot>` <br>	 
   - [App.vue](./arentinc-ui/src/App.vue) - Main画面 <br>  
   - [main.js](./arentinc-ui/src/main.js) - 共通library設定箇所 
 
