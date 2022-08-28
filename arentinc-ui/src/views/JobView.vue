@@ -68,7 +68,7 @@
       <div style="width: 300px; height: 200px">
         <canvas id="jobPieChart"></canvas>
       </div>
-      <div style="width: 600px; height: 200px">
+      <div style="margin-left: 10px; width: 600px; height: 200px">
         <canvas id="jobBarChart"></canvas>
       </div>
     </div>
