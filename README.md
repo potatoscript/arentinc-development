@@ -54,21 +54,25 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
   - [Jobsテーブル](./document/Jobs.sql) - 業務テーブルデータDDL
   
 -　Backend　フォルダ構造
-  -[Startup.cs](./arentinc-api/Startup.cs) - Get the connectionString of the database from `appsettings.json`
-  -[appsettings.json](./arentinc-api/appsettings.cs) - Set the connectionSgring of the database
-  -Controllers
-   |-EmployeeConroller.cs
-   |-JobController.cs
-  -Models
-   |-DBContext.cs
-   |-Employee.cs
-   |-Job.cs
-  -Services 
-   |-DataBaseServices.cs
-   |-EmployeeServices.cs
-   |-JobServices.cs
+  - [Startup.cs](./arentinc-api/Startup.cs) - Get the connectionString of the database from `appsettings.json`
+  - [appsettings.json](./arentinc-api/appsettings.cs) - Set the connectionSgring of the database
+  - Controllers<br>
+    |- [EmployeeConroller.cs](./arentinc-api/Controllers/EmployeeConroller.cs)<br>
+    |- [JobController.cs](./arentinc-api/Controllers/JobConroller.cs)<br>
+  - Models<br>
+    |- [DBContext.cs](./arentinc-api/Models/DBContext.cs)<br>
+    |- [Employee.cs](./arentinc-api/Models/Employee.cs)<br>
+    |- [Job.cs](./arentinc-api/Models/Job.cs)<br>
+  - Services <br>
+    |- [DataBaseServices.cs](./arentinc-api/Services/DataBaseServices.cs)<br>
+    |- [EmployeeServices.cs](./arentinc-api/Services/EmployeeServices.cs)<br>
+    |- [JobServices.cs](./arentinc-api/Services/JobServices.cs)<br>
+	
 -　Frontend　フォルダ構造
-
+  - dist
+  - assets
+     |- js - [url.js](./arentinc-ui/src/assets/js/url.js) - BackendのURLを設定する `API_URL: "https://localhost:44306/api/"`
+	 |- [dummy.json](./arentinc-ui/src/assets/dummy.json) - Backendの接続なし時のダミーデータ (デモンストレーション用)
 -　Deploy　配備
 　　- deploy.sh - FrontendをgitHubに配備する
   ```sh
@@ -88,7 +92,7 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
    cd -
   ```  
 　　- Dockerfile - BackendをDocker Imageを作成する
-　　```
+　　```bash
    # Get base SDK Image from Microsoft
    FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
    WORKDIR /app
@@ -110,11 +114,13 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
   ```
 
 ### 継続的な開発
+[目次](#目次)
 
 ー　今後検証付きのログインページを作成する
 ー　Chart.js を含めて、結果をグラフの形式で作成する
 
 
 ## 著者
+[目次](#目次)
 
 - Website - [BRUCE LIM](https://potatoscript.github.io/resume/)
