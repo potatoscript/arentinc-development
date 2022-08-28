@@ -215,12 +215,10 @@ import InputModalView from "./InputModalView.vue";
 import dummy from "../assets/dummy.json";
 // chart library
 import Chart from "chart.js/auto";
-import ChartJsPluginDataLabels from "chartjs-plugin-datalabels";
 
 export default {
   components: {
     InputModalView,
-    ChartJsPluginDataLabels,
   },
   data() {
     return {
