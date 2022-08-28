@@ -10,91 +10,111 @@ Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で�
   - [スクリーンショット](#スクリーンショット)
   - [リンク](#リンク)
 - [構造](#構造)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+  - [開発環境・ツール](#開発環境・ツール)
+  - [コード構造・開発手順](#コード構造・開発手順)
+  - [継続的な開発](#継続的な開発)
+- [著者](#著者)
 - [Acknowledgments](#acknowledgments)
 
 
 ## 概要
 
 ### ワークフロー
-
+[目次](#目次)
 <image style="width:300px;height:150px" src="./document/workflow.png" />
 
 ### スクリーンショット
-
-![screenshot](./document/screenshot.jpg)
+[目次](#目次)
 <image style="width:300px;height:150px" src="./document/screenshot.png" />
 
 
 ### リンク
+[目次](#目次)
 
-- ライブサイト URL: [The System](https://potatoscript.github.io/arentinc-production/)
+- 以下のリンクは、デモンストレーションのために github にアップロードされた [Front End] システムです。
+- [Front End]ライブサイト URL: [The System](https://potatoscript.github.io/arentinc-production/)
 
 ## 構造
+[目次](#目次)
+### 開発環境・ツール
 
-### Built with
-
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [PostgreSQL](https://www.postgresql.org/) - Database
+- [ASP.NET CORE API](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0) - Back End development framework in c#
+- [Vue.js](https://vuejs.org/) - Front End development library with [cli](https://cli.vuejs.org/) framework
+- [AXIOS](https://axios-http.com/docs/intro) - ブラウザから XMLHttpRequest を作成する
+- [Boostrap.js](https://getbootstrap.com/) - css スタイリング ライブラリ
 
 
-### What I learned
+### コード構造・開発手順
+[目次](#目次)
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
-To see how you can add code snippets, see below:
+-　DB定義
+  - [Employeesテーブル](./document/Employees.sql) - 従業員マスターテーブルデータDDL
+  - [Jobsテーブル](./document/Jobs.sql) - 業務テーブルデータDDL
+  
+-　Backend　フォルダ構造
+  -[Startup.cs](./arentinc-api/Startup.cs) - Get the connectionString of the database from `appsettings.json`
+  -[appsettings.json](./arentinc-api/appsettings.cs) - Set the connectionSgring of the database
+  -Controllers
+   |-EmployeeConroller.cs
+   |-JobController.cs
+  -Models
+   |-DBContext.cs
+   |-Employee.cs
+   |-Job.cs
+  -Services 
+   |-DataBaseServices.cs
+   |-EmployeeServices.cs
+   |-JobServices.cs
+-　Frontend　フォルダ構造
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+-　Deploy　配備
+　　- deploy.sh - FrontendをgitHubに配備する
+  ```sh
+   #!/usr/bin/env sh
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+   set -e
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+   npm run build
 
-### Continued development
+   cd dist
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+   git init
+   git add -A
+   git commit -m "New Deplyment"
+   git push -f git@github.com:potatoscript/arentinc-production.git master:gh-pages
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+   cd -
+  ```  
+　　- Dockerfile - BackendをDocker Imageを作成する
+　　```
+   # Get base SDK Image from Microsoft
+   FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
+   WORKDIR /app
 
-### Useful resources
+   # Copy the CSPROJ file and restore any dependecies via NUGET
+   COPY *.csproj ./
+   RUN dotnet restore
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+   # Copy the project files and build release
+   COPY . ./
+   RUN dotnet publish -c Release -o out
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+   # Generate runtime image
+   FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+   WORKDIR /app
+   EXPOSE 80
+   COPY --from=build-env /app/out .
+   ENTRYPOINT [ "dotnet", "DockerAPI.dll" ]
+  ```
 
-## Author
+### 継続的な開発
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+ー　今後検証付きのログインページを作成する
+ー　Chart.js を含めて、結果をグラフの形式で作成する
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
-## Acknowledgments
+## 著者
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [BRUCE LIM](https://potatoscript.github.io/resume/)
