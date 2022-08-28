@@ -44,11 +44,11 @@
 ### b ｺｰﾄﾞﾌｧｲﾙ構造定義
 [目次](#目次)
 
--　DB定義
+####　DB定義
   - [Employeesテーブル](./document/Employees.sql) - 従業員マスターテーブルデータDDL
   - [Jobsテーブル](./document/Jobs.sql) - 業務テーブルデータDDL
   
--　Backend　フォルダ構造
+####　Backend　フォルダ構造
   - [Startup.cs](./arentinc-api/Startup.cs) - Get the connectionString of the database from `appsettings.json`
   - [appsettings.json](./arentinc-api/appsettings.cs) - Set the connectionSgring of the database
   - Controllers - Frontendの入口 <br>
@@ -63,7 +63,7 @@
     |- [EmployeeServices.cs](./arentinc-api/Services/EmployeeServices.cs) - 従業員ＳＱＬクエリ作成クラス <br>
     |- [JobServices.cs](./arentinc-api/Services/JobServices.cs) - 業務ＳＱＬクエリ作成クラス <br>
 	
--　Frontend　フォルダ構造
+####　Frontend　フォルダ構造
   - [dist](./arentinc-ui/dist/) - デプロイされたファイルの場所<br>
   - assets<br>
      |- js - [url.js](./arentinc-ui/src/assets/js/url.js) - BackendのURLを設定する `API_URL: "https://localhost:44306/api/"` <br>
@@ -79,24 +79,23 @@
   - [App.vue](./arentinc-ui/src/App.vue) - Main画面 <br>  
   - [main.js](./arentinc-ui/src/main.js) - 共通library設定箇所 
 
-  
--　Deploy　配備
+####　Deploy　配備
 [目次](#目次)
 
-　　- FrontendをgitHubに配備する設定箇所：
-    - [deploy.sh](./arentinc-ui/src/deploy.sh) 
-    - [package.json](./arentinc-ui/src/package.json) - `"deploy": "sh deploy.sh"`
-	- [vue.config.js](./arentinc-ui/src/package.json) - `publicPath : '/arentinc-production/'`
+　　- FrontendをgitHubに配備する設定箇所：<br>  
+    - [deploy.sh](./arentinc-ui/src/deploy.sh)<br>   
+    - [package.json](./arentinc-ui/src/package.json) - `"deploy": "sh deploy.sh"`<br>  
+	- [vue.config.js](./arentinc-ui/src/package.json) - `publicPath : '/arentinc-production/'`<br>  
  
-　　- BackendをDocker Imageを作成する設定箇所：
-    - [Dockerfile](./arentinc-api/Dockerfile) 
-	- Image名称定義 : `<Ddocker Hub ID>/<Project Name>:<Version>` => `docker build -t potatoscript/arentinc-api .`
+　　- BackendをDocker Imageを作成する設定箇所：<br>  
+    - [Dockerfile](./arentinc-api/Dockerfile) <br>  
+	- Image名称定義 : `<Ddocker Hub ID>/<Project Name>:<Version>` => `docker build -t potatoscript/arentinc-api .`<br>  
 　　
 ### c 継続的な開発
 [目次](#目次)
 
-ー　今後検証付きのログインページを作成する
-ー　Chart.js を含めて、結果をグラフの形式で作成する
+- 今後検証付きのログインページを作成する
+- Chart.js を含めて、結果をグラフの形式で作成する
 
 
 ## d 著者
