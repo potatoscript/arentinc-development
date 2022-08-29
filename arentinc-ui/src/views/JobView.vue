@@ -64,14 +64,20 @@
       </tbody>
     </table>
     <!--▲業務件数テーブルデータ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲-->
-    <div class="input-group">
-      <div style="width: 300px; height: 200px">
-        <canvas id="jobPieChart"></canvas>
-      </div>
-      <div style="margin-left: 10px; width: 600px; height: 200px">
-        <canvas id="jobBarChart"></canvas>
-      </div>
-    </div>
+    <!--▼CHART▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
+    <table>
+      <tr>
+        <td>
+          <canvas id="jobPieChart" width="200" height="200"></canvas>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 300px">
+          <canvas id="jobBarChart" height="200"></canvas>
+        </td>
+      </tr>
+    </table>
+    <!--▲CHART▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲-->
     <!--▼データ編集MODAL▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
     <input-modal-view
       :Title="modalTitle"
@@ -215,6 +221,7 @@ import InputModalView from "./InputModalView.vue";
 import dummy from "../assets/dummy.json";
 // chart library
 import Chart from "chart.js/auto";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 export default {
   components: {
@@ -246,15 +253,17 @@ export default {
     };
   },
   methods: {
+    // 新規追加ボタン押す
     addClick() {
       this.modalTitle = ja.New;
       this.JobId = 0;
       this.EmployeeName = "-";
       this.EmployeeDepartment = "-";
-      this.Content = "-";
+      this.JobContent = "-";
       this.DueDate = this.currentDate();
       this.Status = ja.DefaultStatus;
     },
+    // 新規追加クエリ
     createClick() {
       axios
         .post(url.API_URL + "Job/create-job", {
@@ -302,10 +311,11 @@ export default {
       this.EmployeeName = dat.employeeName;
       this.EmployeeNameSelect = dat.employeeName + "_" + dat.employeeDepartment;
       this.EmployeeDepartment = dat.employeeDepartment;
-      this.Content = dat.jobContent;
+      this.JobContent = dat.jobContent;
       this.DueDate = dat.dueDate;
       this.Status = dat.status;
     },
+    // 従業員マスタープルダウンデータ取得する
     getEmployeeList() {
       axios
         .get(url.API_URL + "Employee/read-all-employees")
@@ -313,6 +323,7 @@ export default {
           this.employeeList = response.data;
         });
     },
+    // 従業員マスターデータを選択すると部署が自動に設定する
     getDepartment() {
       var val = this.EmployeeNameSelect.split("_");
       this.EmployeeName = String(val.slice(0, 1));
@@ -347,9 +358,9 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          // 接続がない場合、ダミーデータが使用されます
-          self.jobs = dummy[0].jobscount;
-          self.createPieChart();
+          // 接続がない場合、ダミーデータが使用されます DEMO deploy ONLY
+          //self.jobs = dummy[0].jobscount;
+          //self.createPieChart();
         });
     },
     createPieChart() {
@@ -388,6 +399,7 @@ export default {
           },
         },
       };
+      Chart.register(ChartDataLabels);
       const jobChart = new Chart(ctx, config);
       jobChart;
       this.createBarChart();

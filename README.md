@@ -25,7 +25,13 @@
 <table>
 <tr>
 <td><image style="width:300px;height:150px" src="./document/screenshot.png" /></td>
-<td></td>
+</tr>
+<tr>
+<td>PC表示</td>
+<td><image style="width:300px;height:150px" src="./document/screenshot2.png" /></td>
+</tr>
+<tr>
+<td>スマートフォン表示</td>
 <td><image style="width:300px;height:150px" src="./document/screenshot2.png" /></td>
 </tr>
 </table>
@@ -54,11 +60,12 @@
   - [Jobsテーブル](./document/Jobs.sql) - 業務テーブルデータDDL
   
 ### 2. Backend　フォルダ構造 
+  - [dist](./arentinc-api/dist) - デプロイされたファイルの場所<br>
   - [Startup.cs](./arentinc-api/Startup.cs) - Get the connectionString of the database from `appsettings.json`
-  - [appsettings.json](./arentinc-api/appsettings.cs) - Set the connectionSgring of the database
+  - [appsettings.json](./arentinc-api/appsettings.json) - Set the connectionSgring of the database
   - Controllers - Frontendの入口 <br>
-    |- [EmployeeConroller.cs](./arentinc-api/Controllers/EmployeeConroller.cs) - 従業員マスターデータhttp リクエスト→EmployeeServices.cs <br>
-    |- [JobController.cs](./arentinc-api/Controllers/JobConroller.cs) - 業務データhttp リクエスト→JobServices.cs <br>
+    |- [EmployeeConroller.cs](./arentinc-api/Controllers/EmployeeController.cs) - 従業員マスターデータhttp リクエスト→EmployeeServices.cs <br>
+    |- [JobController.cs](./arentinc-api/Controllers/JobController.cs) - 業務データhttp リクエスト→JobServices.cs <br>
   - Models<br>
     |- [DBContext.cs](./arentinc-api/Models/DBContext.cs) -　データベーステーブル名定義 <br>
     |- [Employee.cs](./arentinc-api/Models/Employee.cs) - 従業員データベーステーブル項目定義 <br> 
@@ -69,7 +76,7 @@
     |- [JobServices.cs](./arentinc-api/Services/JobServices.cs) - 業務ＳＱＬクエリ作成クラス <br>
 	
 ### 3. Frontend　フォルダ構造 
-  - [dist](./arentinc-ui/dist/) - デプロイされたファイルの場所<br>
+  - [dist](./arentinc-ui/dist) - デプロイされたファイルの場所<br>
   - assets<br>
      |- js - [url.js](./arentinc-ui/src/assets/js/url.js) - BackendのURLを設定する `API_URL: "https://localhost:44306/api/"` <br>
 	 |- [dummy.json](./arentinc-ui/src/assets/dummy.json) - Backendの接続なし時のダミーデータ (デモンストレーション用) <br>
@@ -88,9 +95,9 @@
 [目次](#目次)
 
   - FrontendをgitHubに配備する設定箇所：
-    - [deploy.sh](./arentinc-ui/src/deploy.sh)
-    - [package.json](./arentinc-ui/src/package.json) - `"deploy": "sh deploy.sh"`
-    - [vue.config.js](./arentinc-ui/src/package.json) - `publicPath : '/arentinc-production/'`
+    - [deploy.sh](./arentinc-ui/deploy.sh)
+    - [package.json](./arentinc-ui/package.json) - `"deploy": "sh deploy.sh"`
+    - [vue.config.js](./arentinc-ui/vue.config.js) - `publicPath : '/arentinc-production/'`
 
   - BackendをDocker Imageを作成する設定箇所：  
 	- [Dockerfile](./arentinc-api/Dockerfile) <br>
@@ -99,7 +106,10 @@
 ### c 継続的な開発
 [目次](#目次)
 
-- 今後検証付きのログインページを作成する
+- 今後の課題：
+   - PC・スマートフォン表示の調整改善
+   - Uncaught (in promise) RangeError: Maximum call stack size exceeded 
+- 今後検証付きのログインページを作成する（Login・Logout・Register機能追加）
 
 
 ## d 著者
