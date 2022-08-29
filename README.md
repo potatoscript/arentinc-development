@@ -25,6 +25,7 @@
 <table>
 <tr>
 <td><image style="width:300px;height:150px" src="./document/screenshot.png" /></td>
+<td><video controls width="250"><source src="./document/App demonstration.mp4" type="video/mp4">Sorry, your browser doesn't support embedded videos</video></td>
 </tr>
 <tr>
 <td>PC表示</td>
