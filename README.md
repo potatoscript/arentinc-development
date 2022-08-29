@@ -32,7 +32,7 @@
 </tr>
 <tr>
 <td>スマートフォン表示</td>
-<td><image style="width:300px;height:150px" src="./document/screenshot3.png" /></td>
+<td><image style="width:200px;height:250px" src="./document/screenshot3.png" /></td>
 </tr>
 </table>
 
