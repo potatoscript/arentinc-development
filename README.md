@@ -23,7 +23,7 @@
 
 ### スクリーンショット
 
-- [DEMO Video](./document/App demonstration.mp4)
+- [DEMO](./document/demo.mp4)
 
 <table>
 <tr>
