@@ -25,7 +25,7 @@
 <table>
 <tr>
 <td><image style="width:300px;height:150px" src="./document/screenshot.png" /></td>
-<td><video src="./document/App demonstration.mp4" width=180 /></td>
+<td><video src="./document/App demonstration.mp4" width=180 />[DEMO Video](./document/App demonstration.mp4)</td>
 </tr>
 <tr>
 <td>PC表示</td>
