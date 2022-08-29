@@ -25,7 +25,7 @@
 <table>
 <tr>
 <td><image style="width:300px;height:150px" src="./document/screenshot.png" /></td>
-<td><video src="./document/App demonstration.mp4" width=180 />[DEMO Video](./document/App demonstration.mp4)</td>
+<td>[DEMO Video](./document/App demonstration.mp4)</td>
 </tr>
 <tr>
 <td>PC表示</td>
@@ -33,7 +33,7 @@
 </tr>
 <tr>
 <td>スマートフォン表示</td>
-<td><image style="width:300px;height:150px" src="./document/screenshot2.png" /></td>
+<td><image style="width:300px;height:150px" src="./document/screenshot3.png" /></td>
 </tr>
 </table>
 
