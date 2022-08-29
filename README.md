@@ -22,10 +22,11 @@
 <image style="width:300px;height:150px" src="./document/workflow.png" />
 
 ### スクリーンショット
-
-- [DEMO](./document/demo.mp4)
-
 <table>
+<tr>
+<td>DEMO</td>
+<td><image style="width:300px;height:150px" src="./document/demo.gif" /></td>
+</tr>
 <tr>
 <td>PC表示</td>
 <td><image style="width:300px;height:150px" src="./document/screenshot.png" /></td>
