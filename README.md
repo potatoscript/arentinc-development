@@ -1,4 +1,4 @@
-# Coding Challenge - Workload Monitoring Solution
+# 業務管理システム
 
 - Vue.js【フロントエンド】とASP.NET CORE API【バックエンド】で作成するシンプルなシステムです。<br>
 - 企業の従業員のワークロードを監視するためのソリューションです- 
